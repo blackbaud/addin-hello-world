@@ -1,0 +1,11 @@
+﻿body {
+    padding-top: 5px;
+}
+
+#authToken {
+    display: none;
+}
+
+#modalResults {
+    display: none;
+}
