@@ -18,6 +18,9 @@
         // wire up a click handler for the modal button
         $('#showModal').click(showSimpleModal);
 
+        // wire up a click handler for the modal button
+        $('#showAddCustomerModal').click(showAddCustomerModal);
+
         // wire up a click handler for the help button
         $('#openHelp').click(openHelp);
 
@@ -63,12 +66,22 @@
     showModal('https://blackbaudaddinhelloworld.azurewebsites.net/helloworldmodal.html', context);
   }
 
+  function showAddCustomerModal() {
+    // define context for the modal
+    var context = {
+      firstName: 'John',
+      lastName: 'Doe'
+    };
+
+    showModal('https://host.nxt.blackbaud.com/addin-modal-demo/add-customer', context);
+  }
+
   function invokeNavigation() {
-    client.navigate({ url: 'https://renxt.blackbaud.com/home' });
+    client.navigate({ url: 'https://www.blackbaud.com' });
   }
 
   function openHelp() {
-    client.openHelp({ helpKey: 'bb-constituents.html' });
+    client.openHelp({ helpKey: 'applications.html' });
   }
   
 }());
