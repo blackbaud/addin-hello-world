@@ -4,7 +4,6 @@
   var client = new BBSkyAddinClient.AddinClient({
       callbacks: {
           init: function (args) {
-
               // inform the host page that the add-in is ready to be shown
               args.ready({
                   showUI: true,
@@ -15,12 +14,10 @@
           buttonClick: function () {
               showAddCustomerModal();
           }
-
       }
   });
 
   function showModal(url, context) {
-
       // launch the modal and pass it some context
       client.showModal({
           url: url,
