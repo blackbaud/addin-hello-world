@@ -40,5 +40,4 @@
 
       showModal('https://host.nxt.blackbaud.com/addin-modal-demo/add-customer', context);
   }
-
 }());
