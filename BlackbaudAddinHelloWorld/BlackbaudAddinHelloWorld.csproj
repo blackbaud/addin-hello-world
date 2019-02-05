@@ -81,6 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="HelloWorldButton.html" />
+    <Content Include="HelloWorldButton.js" />
     <Content Include="HelloWorldModal.css" />
     <Content Include="HelloWorldModal.html" />
     <Content Include="HelloWorldModal.js" />
