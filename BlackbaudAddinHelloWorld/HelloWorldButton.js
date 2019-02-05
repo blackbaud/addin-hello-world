@@ -8,7 +8,7 @@
               args.ready({
                   showUI: true,
                   title: 'Add customer',
-                  buttonConfig: { style: 1 }
+                  buttonConfig: { style: BBSkyAddinClient.AddinButtonStyle.Add }
               });
           },
           buttonClick: function () {
