@@ -5,69 +5,84 @@
     <title></title>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/@blackbaud/sky-addin-client@1.0.2/bundles/sky-addin-client.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js" integrity="sha384-16lFN9qcb6QufzLtaUJhheDa8meXzV5h7456bNV1qySH0yprmM1BSJV7rkXCWxth" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@blackbaud/sky-addin-client@1.0.8/bundles/sky-addin-client.umd.min.js" integrity="sha384-HhOViOrHWjr3XNte0gcwPwTLQQWjY9wlg6eRloWh9hOEyW+uO+nUQETd5oKREegU" crossorigin="anonymous"></script>
 
     <script src="HelloWorld.js"></script>
     <link href="HelloWorld.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
-    <p>Hello world!</p>
-    <span>This is a very simple custom tile</span>
-
-    <div>
-        <p></p>
-        <div>The environment ID is a context value that is available to all add-ins:</div>
-        <span id="environmentId"></span>
+    <div id="helpContent">
+        <div>
+            You can subscribe to the <code>helpClick</code> and provide additional help content to your users.
+        </div>
+        <div id="helpContent-exit">
+            <i class="fas fa-times"></i>
+        </div>
     </div>
+    <div id="tileContent">
+        <div id="helloWorldContainer">
+            <h1 style="margin-top: 0;">Hello world!</h1>
+            <div>This is a very simple custom tile</div>
+        </div>
 
-    <div>
-        <p></p>
-        <div>Additional context values vary for each extension point - for the current extension point, the following context is provided:</div>
-        <span id="context"></span>
+        <p>
+            <div>The environment ID is a context value that is available to all add-ins:</div>
+            <span id="environmentId"></span>
+        </p>
+
+        <p>
+            <div>Additional context values vary for each extension point - for the current extension point, the following context is provided:</div>
+            <span id="context"></span>
+        </p>
+
+        <p>
+            <div>Click the button to request a user identity token for the current user:</div>
+            <button id="getUserIdentityToken">Get user identity token</button>
+        </p>
+
+        <p id="userIdentityToken">
+            <div>The following string represents the identity of the current user, and can be provided to the add-in's backend for validation:</div>
+            <span id="userIdentityTokenValue"></span>
+        </p>
+
+        <p>
+            <div>Add-ins can show modal dialogs:</div>
+            <button id="showModal">Show a simple modal</button>
+        </p>
+
+        <p>
+            <div>Modals can be implemented using SKY UX for a more consistent user experience. The following button shows a modal implemented in a separate <a href="https://github.com/blackbaud/skyux-spa-addin-modal-demo" target="_blank">modal demo</a> SKY UX SPA:</div>
+            <button id="showAddCustomerModal">Show <b>Add customer</b> modal</button>
+        </p>
+
+        <p id="modalResults">
+            <div>The modal returned the following context:</div>
+            <span id="modalContextReturned"></span>
+        </p>
+
+        <p>
+            <div>Add-ins can also open the help window:</div>
+            <button id="openHelp">Open help for <b>applications.html</b></button>
+        </p>
+
+        <p>
+            <div>Add-ins can also navigate the host page:</div>
+            <button id="invokeNavigation">Navigate to <b>https://www.blackbaud.com</b></button>
+        </p>
     </div>
-
-    <div>
-        <p></p>
-        <div>Click the button to request a user identity token for the current user:</div>
-        <button id="getAuthToken">Get auth token</button>
+    <div id="settingsContent">
+        <p>
+            This is a simple (albeit convoluted) example of handling the <code>settingsClick</code> to show user-specific tile options.
+        </p>
+        <p>
+            <input type="checkbox" id="showHelloWorldChk" />
+            <label for="showHelloWorldChk">Show hello world header</label>
+        </p>
+        <p>
+            <button id="closeSettings">Close modal</button>
+        </p>
     </div>
-
-    <div id="authToken">
-        <p></p>
-        <div>The following string represents the identity of the current user, and can be provided to the add-in's backend for validation:</div>
-        <span id="authTokenValue"></span>
-    </div>
-
-    <div>
-        <p></p>
-        <div>Add-ins can show modal dialogs:</div>
-        <button id="showModal">Show a simple modal</button>
-    </div>
-
-    <div>
-        <p />
-        <div>Modals can be implemented using SKY UX for a more consistent user experience. The following button shows a modal implemented in a separate <a href="https://github.com/blackbaud/skyux-spa-addin-modal-demo" target="_blank">modal demo</a> SKY UX SPA:</div>
-        <button id="showAddCustomerModal">Show <b>Add customer</b> modal</button>
-    </div>
-
-    <div id="modalResults">
-        <p></p>
-        <div>The modal returned the following context:</div>
-        <span id="modalContextReturned"></span>
-    </div>
-
-    <div>
-        <p></p>
-        <div>Add-ins can also open the help window:</div>
-        <button id="openHelp">Open help for <b>applications.html</b></button>
-    </div>
-
-    <div>
-        <p></p>
-        <div>Add-ins can also navigate the host page:</div>
-        <button id="invokeNavigation">Navigate to <b>https://www.blackbaud.com</b></button>
-    </div>
-
 </body>
 </html>
