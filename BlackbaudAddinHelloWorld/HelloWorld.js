@@ -49,8 +49,8 @@
                     tileConfig: {
                         showHelp: true,
                         showSettings: true,
-                        summaryStyle: 'Text',
-                        summaryChecked: true
+                        summaryStyle: BBSkyAddinClient.AddinTileSummaryStyle.Text,
+                        summaryText: 'Summary text'
                     }
                 });
             },
