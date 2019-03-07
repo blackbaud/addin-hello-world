@@ -42,6 +42,9 @@
                     setWelcomeMessageVisibility();
                 });
 
+                // wire up a click handler for the toast button
+                $('#showToast').click(showToast);
+
                 // inform the host page that the add-in is ready to be shown
                 args.ready({
                     showUI: true,
@@ -135,6 +138,13 @@
 
     function openHelp() {
         client.openHelp({ helpKey: 'applications.html' });
+    }
+
+    function showToast() {
+        client.showToast({
+            message: 'this is a simple toast message',
+            style: BBSkyAddinClient.AddinToastStyle.Success
+        });
     }
 
 }());
