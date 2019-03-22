@@ -31,9 +31,8 @@
                 $('#helpContent').hide();
                 $('#helpContent-exit').click(exitHelp);
                 $('#closeSettings').click(function () {
-                    // close settings, re-show tile content
-                    $('#settingsContent').hide();
-                    $('#tileContent').show();
+                    // close settings
+                    $('#settingsContent').slideUp();
                 });
 
                 $("#showHelloWorldChk").prop('checked', true);
@@ -76,14 +75,8 @@
     }
 
     function settingsClick() {
-        // set settings content height same as tile content so the tile size doesn't jump
-        // 100 for min-height
-        var tileHeight = $('#tileContent').height() || 100;
-        $('#settingsContent').height(tileHeight);
-
-        // show settings, hide tile content
-        $('#tileContent').hide();
-        $('#settingsContent').show();
+        // show settings
+        $('#settingsContent').slideDown();
     }
 
     function getUserIdentityToken() {
