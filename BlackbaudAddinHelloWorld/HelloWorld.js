@@ -44,6 +44,9 @@
                 // wire up a click handler for the toast button
                 $('#showToast').click(showToast);
 
+                // wire up a click handler for the flyout button
+                $('#showFlyout').click(showFlyout);
+
                 // inform the host page that the add-in is ready to be shown
                 args.ready({
                     showUI: true,
@@ -137,6 +140,24 @@
         client.showToast({
             message: 'this is a simple toast message',
             style: BBSkyAddinClient.AddinToastStyle.Success
+        });
+    }
+
+    function showFlyout() {
+        client.showFlyout({
+            url: 'https://blackbaudaddinhelloworld.azurewebsites.net/helloworldflyout.html',
+            showIterator: true,
+            iteratorPreviousDisabled: false,
+            iteratorNextDisabled: false,
+            defaultWidth: 500,
+            maxWidth: 800,
+            minWidth: 200,
+            context: {
+                name: 'John Doe',
+                constituentCode: 'Alumnus',
+                latestGift: 175,
+                status: 'Paid'
+            }
         });
     }
 

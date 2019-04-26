@@ -83,6 +83,9 @@
     <Content Include="Global.asax" />
     <Content Include="HelloWorldButton.html" />
     <Content Include="HelloWorldButton.js" />
+    <Content Include="HelloWorldFlyout.css" />
+    <Content Include="HelloWorldFlyout.html" />
+    <Content Include="HelloWorldFlyout.js" />
     <Content Include="HelloWorldModal.css" />
     <Content Include="HelloWorldModal.html" />
     <Content Include="HelloWorldModal.js" />
