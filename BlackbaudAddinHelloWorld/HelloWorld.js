@@ -155,7 +155,6 @@
             context: {
                 name: 'John Doe',
                 constituentCode: 'Alumnus',
-                latestGift: 175,
                 status: 'Paid'
             }
         });
