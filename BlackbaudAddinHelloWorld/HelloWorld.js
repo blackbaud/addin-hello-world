@@ -46,6 +46,7 @@
 
                 // wire up a click handler for the flyout button
                 $('#showFlyout').click(showFlyout);
+                $('#flyoutClosed').hide();
 
                 // inform the host page that the add-in is ready to be shown
                 args.ready({
@@ -60,7 +61,9 @@
                 });
             },
             helpClick: helpClick,
-            settingsClick: settingsClick
+            settingsClick: settingsClick,
+            flyoutNextClick: flyoutNextClick,
+            flyoutPreviousClick: flyoutPreviousClick
         }
     });
 
@@ -83,6 +86,20 @@
     function settingsClick() {
         // show settings
         $('#settingsContent').slideDown();
+    }
+
+    function flyoutNextClick() {
+        // show toast for next button clicked
+        client.showToast({
+            message: "Next button was clicked"
+        });
+    }
+
+    function flyoutPreviousClick() {
+        // show toast for previous button clicked
+        client.showToast({
+            message: "Previous button was clicked"
+        });
     }
 
     function getUserIdentityToken() {
@@ -144,6 +161,9 @@
     }
 
     function showFlyout() {
+        $('#flyoutClosed').hide();
+
+        // show a flyout and pass it some content
         client.showFlyout({
             url: 'https://blackbaudaddinhelloworld.azurewebsites.net/helloworldflyout.html',
             showIterator: true,
@@ -157,6 +177,9 @@
                 constituentCode: 'Alumnus',
                 status: 'Paid'
             }
+        }).flyoutClosed.then(function () {
+            // Handle when the flyout is closed
+            $('#flyoutClosed').show();
         });
     }
 
