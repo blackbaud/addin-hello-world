@@ -48,6 +48,12 @@
                 $('#showFlyout').click(showFlyout);
                 $('#flyoutClosed').hide();
 
+                // wire up a click handler for the confirm button
+                $('#showConfirm').click(showConfirm);
+
+                // wire up a click handler for the error button
+                $('#showError').click(showError);
+
                 // inform the host page that the add-in is ready to be shown
                 args.ready({
                     showUI: true,
@@ -180,6 +186,42 @@
         }).flyoutClosed.then(function () {
             // Handle when the flyout is closed
             $('#flyoutClosed').show();
+        });
+    }
+
+    function showConfirm() {
+        $('#confirmAction').hide();
+        $('#confirmActionReturned').text('');
+
+        // show the confirm dialog
+        client.showConfirm({
+            body: 'Are you sure you want to continue?',
+            buttons: [
+                {
+                    action: 'yes',
+                    text: 'Yes',
+                    autofocus: true,
+                    style: BBSkyAddinClient.AddinConfirmButtonStyle.Primary
+                },
+                {
+                    action: 'cancel',
+                    text: 'Cancel',
+                    style: BBSkyAddinClient.AddinConfirmButtonStyle.Link
+                }
+            ],
+            message: 'Saving...'
+        }).then(function (action) {
+            // Handle when the confirm dialog is closed, and show the returned action
+            $('#confirmActionReturned').text(action);
+            $('#confirmAction').show();
+        });
+    }
+
+    function showError() {
+        client.showError({
+            closeText: 'OK',
+            title: 'Save Error',
+            description: 'An unexpected error occurred'
         });
     }
 
