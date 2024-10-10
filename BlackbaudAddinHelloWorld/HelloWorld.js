@@ -59,21 +59,21 @@
                     showUI: true,
                     title: 'My Custom Tile',
                     tileConfig: {
-                        showHelp: true,
+                        showInlineHelp: true,
                         showSettings: true,
                         summaryStyle: BBSkyAddinClient.AddinTileSummaryStyle.Text,
                         summaryText: 'Summary text'
                     }
                 });
             },
-            helpClick: helpClick,
+            inlineHelpClick: inlineHelpClick,
             settingsClick: settingsClick,
             flyoutNextClick: flyoutNextClick,
             flyoutPreviousClick: flyoutPreviousClick
         }
     });
 
-    function helpClick() {
+    function inlineHelpClick() {
         $('#helpContent').show();
     }
 
